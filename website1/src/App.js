@@ -12,14 +12,14 @@ const history = createBrowserHistory();
 
 class App extends Component {  
   render() {
-    return (
+      return (
       <div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />          
         </header>
         <Router history={history}>
           <div>
-            <Navigation/>
+            <Navigation/>                       
             <Switch>
               <Route path='/users/create' component={CreateUser} />
               <Route path='/users/edit/:id' component={EditUser} />
@@ -32,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default (App);

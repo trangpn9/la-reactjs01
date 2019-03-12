@@ -4,13 +4,13 @@ import logo from './logo.svg';
 import './App.css';
 
 // use hoc for class based components
-class LegacyWelcomeClass extends Component {
-  render() {
-    const { t, i18n } = this.props;
-    return <h2>{t('title')}</h2>;
-  }
-}
-const Welcome = withTranslation()(LegacyWelcomeClass);
+// class LegacyWelcomeClass extends Component {
+//   render() {
+//     const { t, i18n } = this.props;
+//     return <h2>{t('title')}</h2>;
+//   }
+// }
+// const Welcome = withTranslation()(LegacyWelcomeClass);
 
 // Component using the Trans component
 function MyComponent() {
@@ -33,7 +33,7 @@ function Page() {
       <Suspense fallback={<Loader />}>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Welcome />
+          {/* <Welcome /> */}
           <button onClick={() => changeLanguage('de')}>German</button>
           <button onClick={() => changeLanguage('en')}>English</button>
           <MyComponent />
