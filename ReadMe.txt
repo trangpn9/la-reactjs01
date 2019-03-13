@@ -13,3 +13,9 @@
   2.5: Create page user edit view information => Done
   2.6: Create page action edit
   2.6: Create page add new user
+
+3. Language
+  3.1: Connect language => Done
+  3.2: Show language from database
+
+4. Cart

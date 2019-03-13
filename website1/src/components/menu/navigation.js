@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import i18n from '../../i18n';
+import { withNamespaces } from 'react-i18next';
 
 class navigation extends Component {
     render() {
-        const changeLanguage = (lng) => {
-            i18n.changeLanguage(lng);
-        }
+        const { i18n } = this.props;
+
+        const changeLanguage = lng => {
+          i18n.changeLanguage(lng);
+        };
         return (            
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/">ReactJS - Laravel</a>
@@ -39,13 +41,14 @@ class navigation extends Component {
                 <form className="form-inline my-2 my-lg-0">                    
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    <button className="btn btn-success btn-language" onClick={() => changeLanguage('vn')}>Vietnamese</button>
-                    <button className="btn btn-danger btn-language" onClick={() => changeLanguage('en')}>English</button>       
+                         
                 </form>
                 </div>
+                <button className="btn btn-success btn-language" onClick={() => changeLanguage('vn')}>Vietnamese</button>
+                <button className="btn btn-danger btn-language" onClick={() => changeLanguage('en')}>English</button>                  
             </nav>                                        
         );
     }
 }
 
-export default navigation;
+export default withNamespaces('translation')(navigation);

@@ -3,10 +3,12 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import UserRow from './UserRow';
 import config from '../config';
+import { withNamespaces } from 'react-i18next';
 
 const URL_SERVER = config.API_SERVER_URL;
 
-class UserList extends Component {    
+class UserList extends Component {      
+    
     constructor(props) {
         super(props);
         this.state = { users: [] };
@@ -41,10 +43,12 @@ class UserList extends Component {
         });
     }
 
-    render() {        
+    render() {   
+        const { t } = this.props;     
         return (
             <div className="container">
-                <h1 className='titleMain'>Users List</h1>                                
+                <h1 className='titleMain'>Users List</h1>    
+                <div>{t('description.part2')}</div>                            
                 <div className='clearfix'>
                 <Link className='btn btn-success pull-right' to='/users/create'>Add User</Link>
                 </div><br />
@@ -66,4 +70,4 @@ class UserList extends Component {
     }
 }
 
-export default UserList;
+export default withNamespaces('translation')(UserList);
