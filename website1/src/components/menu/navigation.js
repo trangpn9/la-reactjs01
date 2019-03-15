@@ -45,7 +45,8 @@ class navigation extends Component {
                 </form>
                 </div>
                 <button className="btn btn-success btn-language" onClick={() => changeLanguage('vn')}>Vietnamese</button>
-                <button className="btn btn-danger btn-language" onClick={() => changeLanguage('en')}>English</button>                  
+                <button className="btn btn-danger btn-language" onClick={() => changeLanguage('en')}>English</button>
+                <button className="btn btn-primary btn-language" onClick={() => changeLanguage('kr')}>Korea</button>                
             </nav>                                        
         );
     }

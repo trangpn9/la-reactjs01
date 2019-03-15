@@ -14,20 +14,26 @@ class UserRow extends Component {
 
     componentDidMount() {
         const lg_en = /\[en\](.*)\[\:en\]/g;
-        const lg_vn = /\[vn\](.*)\[\:vn\]/g;        
+        const lg_vn = /\[vn\](.*)\[\:vn\]/g;
+        const lg_kr = /\[kr\](.*)\[\:kr\]/g;
         const lang_str = this.props.obj.language;        
 
         const fn_lg_EN = lang_str.match(lg_en);
         const fn_lg_VN = lang_str.match(lg_vn);
+        const fn_lg_KR = lang_str.match(lg_kr);
 
         const get_lg_VN = (fn_lg_VN[0]).replace('[vn]','').replace('[:vn]','');
         const get_lg_EN = (fn_lg_EN[0]).replace('[en]','').replace('[:en]','');
+        const get_lg_KR = (fn_lg_KR[0]).replace('[kr]','').replace('[:kr]','');
 
         i18n.addResourceBundle('vn', 'namespace1', {
             key: get_lg_VN,
           });
         i18n.addResourceBundle('en', 'namespace1', {
             key: get_lg_EN,
+        });
+        i18n.addResourceBundle('kr', 'namespace1', {
+            key: get_lg_KR,
         });
     }
 
