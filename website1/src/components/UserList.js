@@ -54,10 +54,11 @@ class UserList extends Component {
                 </div><br />
                 <table className='table table-hover'>
                 <thead>
-                    <tr>
+                    <tr>                        
                         <td>ID</td>
                         <td>Name</td>
                         <td>Email</td>
+                        <td>Language</td>
                         <td colSpan={2}>Actions</td>
                     </tr>
                 </thead>

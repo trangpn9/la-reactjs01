@@ -3,11 +3,32 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import confirm from 'react-confirm';
 import config from '../config';
+import i18n from "i18next";
 
 class UserRow extends Component {    
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
+        this.state = {lang_str: ''};
+    }
+
+    componentDidMount() {
+        const lg_en = /\[en\](.*)\[\:en\]/g;
+        const lg_vn = /\[vn\](.*)\[\:vn\]/g;        
+        const lang_str = this.props.obj.language;        
+
+        const fn_lg_EN = lang_str.match(lg_en);
+        const fn_lg_VN = lang_str.match(lg_vn);
+
+        const get_lg_VN = (fn_lg_VN[0]).replace('[vn]','').replace('[:vn]','');
+        const get_lg_EN = (fn_lg_EN[0]).replace('[en]','').replace('[:en]','');
+
+        i18n.addResourceBundle('vn', 'namespace1', {
+            key: get_lg_VN,
+          });
+        i18n.addResourceBundle('en', 'namespace1', {
+            key: get_lg_EN,
+        });
     }
 
     handleDelete(e) {        
@@ -23,14 +44,15 @@ class UserRow extends Component {
         ).catch(function(error){
             console.log(error);
         });
-    }
+    }  
        
     render() {
         return (
-           <tr>
+           <tr>                        
                <td>{this.props.obj.id}</td>
                <td>{this.props.obj.name}</td>
                <td>{this.props.obj.email}</td>
+               <td>{i18n.t('namespace1:key')}</td>
                <td><Link className='btn btn-primary' to={'/users/edit/' + this.props.obj.id}>Edit</Link></td>
                <td><button className='btn btn-danger' onClick={this.handleDelete}>Delete</button></td>
            </tr>
