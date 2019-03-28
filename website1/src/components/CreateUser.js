@@ -15,6 +15,8 @@ class CreateUser extends Component {
         this.handleChangeName = this.handleChangeName.bind(this)
         this.handleChangeEmail = this.handleChangeEmail.bind(this)
         this.handleChangePassword = this.handleChangePassword.bind(this)
+        this.handleChangeLanguage = this.handleChangeLanguage.bind(this)
+        
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
@@ -25,25 +27,34 @@ class CreateUser extends Component {
       }
     
     handleChangeEmail (e) {
-    this.setState({
-        email: e.target.value
-    })
+        this.setState({
+            email: e.target.value
+        })
     }
 
     handleChangePassword (e) {
-    this.setState({
-        password: e.target.value
-    })
+        this.setState({
+            password: e.target.value
+        })
     }
+
+    handleChangeLanguage (e) {
+        this.setState({
+            language: e.target.value
+        })
+    }
+
     handleSubmit(e){
         e.preventDefault();
         let url = URL_SERVER + 'users';
         const data = {
             name: this.state.name,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            language: this.state.language
         }
-        axios.post(url, data).then(
+        // console.log(data);        
+        axios.post(url, data).then(            
             response => {
                 this.props.history.push('/users')
               }    
@@ -73,6 +84,10 @@ class CreateUser extends Component {
                         <input type='password' className='form-control' id='password' placeholder='Password'
                         value={this.state.password} onChange={this.handleChangePassword} required />
                     </div>
+                    <div className='form-group'>
+                        <label htmlFor='password'>Language</label>
+                        <textarea className="form-control" id='language' placeholder='Content put it here!' aria-label="With textarea" value={this.state.language} onChange={this.handleChangeLanguage} required>[vn][:vn][en][:en][kr][:kr]</textarea>                        
+                    </div>                    
                     <button type='submit' className='btn btn-primary'>Add User</button>
                 </form>
             </div>

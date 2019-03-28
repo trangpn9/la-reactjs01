@@ -8,14 +8,15 @@ import i18n from "i18next";
 class UserRow extends Component {    
     constructor(props) {
         super(props);
-        this.handleDelete = this.handleDelete.bind(this);        
+        this.handleDelete = this.handleDelete.bind(this);
+        this.state = {lang_str: this.props.obj.language};
     }
 
     componentDidMount() {
         const lg_en = /\[en\](.*)\[\:en\]/g;
         const lg_vn = /\[vn\](.*)\[\:vn\]/g;
         const lg_kr = /\[kr\](.*)\[\:kr\]/g;
-        const lang_str = this.props.obj.language;        
+        const lang_str = this.state.lang_str;
 
         const fn_lg_EN = lang_str.match(lg_en);
         const fn_lg_VN = lang_str.match(lg_vn);
@@ -25,13 +26,13 @@ class UserRow extends Component {
         const get_lg_EN = (fn_lg_EN[0]).replace('[en]','').replace('[:en]','');
         const get_lg_KR = (fn_lg_KR[0]).replace('[kr]','').replace('[:kr]','');
 
-        i18n.addResourceBundle('vn', 'namespace' + this.props.obj.id, {
+        i18n.addResourceBundle('vn', 'namespace' + this.props.obj.index , {
             key: get_lg_VN,
           });
-        i18n.addResourceBundle('en', 'namespace' + this.props.obj.id, {
+        i18n.addResourceBundle('en', 'namespace' + this.props.obj.index , {
             key: get_lg_EN,
         });
-        i18n.addResourceBundle('kr', 'namespace' + this.props.obj.id, {
+        i18n.addResourceBundle('kr', 'namespace' + this.props.obj.index, {
             key: get_lg_KR,
         });
     }
@@ -57,7 +58,8 @@ class UserRow extends Component {
                <td>{this.props.obj.id}</td>
                <td>{this.props.obj.name}</td>
                <td>{this.props.obj.email}</td>
-               <td>{i18n.t('namespace' + this.props.obj.id + ':key')}</td>
+               <td>{i18n.t('namespace' + this.props.obj.index + ':key')}</td>
+               {/* <td>{this.state.lang_str}</td> */}
                <td><Link className='btn btn-primary' to={'/users/edit/' + this.props.obj.id}>Edit</Link></td>
                <td><button className='btn btn-danger' onClick={this.handleDelete}>Delete</button></td>
            </tr>
