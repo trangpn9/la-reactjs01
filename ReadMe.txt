@@ -9,13 +9,19 @@
   2.1: Create file default URL connect to Laravel Sevice => Done
   2.2: Input bootstrap into App.js, input css into => Done
   2.3: Create page user list => Done
-  2.4: Delete user list => Done - Accep cors by 'cors' => \Barryvdh\Cors\HandleCors::class,
+  2.4: Delete user list => Done - Accept cors by 'cors' => \Barryvdh\Cors\HandleCors::class,
   2.5: Create page user edit view information => Done
-  2.6: Create page action edit
-  2.6: Create page add new user
+  2.6: Create page action edit => Done
+  2.6: Create page add new user => Done (Hash::make($request->get('password')))
 
 3. Language
   3.1: Connect language => Done
-  3.2: Show language from database
+  3.2: Show language from database => Done
 
-4. Cart
+4. Login API - Admin auth laravel
+
+5. Upload file from React to server
+
+6. TinyMCE - input content into database use https://www.responsivefilemanager.com
+
+5. Cart

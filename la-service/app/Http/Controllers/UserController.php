@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User; //Sửa dụng model User trong thư mục app
 
 class UserController extends Controller
@@ -39,8 +40,8 @@ class UserController extends Controller
         // User::create($request->all());
         $user = new User();
 
-        $user->name = $request->get('name');
-        $user->password = bcrypt($request->get('password'));
+        $user->name = $request->get('name');        
+        $user->password = Hash::make($request->get('password'));
         $user->email = $request->get('email');
         $user->language = $request->get('language');
 
@@ -92,8 +93,13 @@ class UserController extends Controller
         if(! $user){
             return response()->json(['error' => 'Error: User not found']);
         }
+        $user->name = $request->get('name');        
+        $user->password = Hash::make($request->get('password'));
+        $user->email = $request->get('email');
 
-        $user->update($request->all());
+        $user->save();
+        // $user->update($request->all());
+        
         return response()->json(['Message' => 'Success: You have update the user!']);
     }
 

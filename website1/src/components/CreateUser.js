@@ -10,7 +10,8 @@ class CreateUser extends Component {
         this.state = {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            language: '[vn][:vn][en][:en][kr][:kr]',
         }
         this.handleChangeName = this.handleChangeName.bind(this)
         this.handleChangeEmail = this.handleChangeEmail.bind(this)
@@ -86,7 +87,15 @@ class CreateUser extends Component {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='password'>Language</label>
-                        <textarea className="form-control" id='language' placeholder='Content put it here!' aria-label="With textarea" value={this.state.language} onChange={this.handleChangeLanguage} required>[vn][:vn][en][:en][kr][:kr]</textarea>                        
+                        <textarea
+                            className="form-control"
+                            id='language'
+                            placeholder='Content put it here!'
+                            aria-label="With textarea"
+                            value={this.state.language}
+                            onChange={this.handleChangeLanguage}
+                            required>
+                        </textarea>                        
                     </div>                    
                     <button type='submit' className='btn btn-primary'>Add User</button>
                 </form>
